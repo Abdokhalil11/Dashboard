@@ -1,0 +1,19 @@
+.b-s{
+    box-shadow: 0 0 10px #999;
+}
+
+.g-3-c{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 10px;
+}
+
+.f-div{
+    padding: 10px 10px;
+}
+
+.box{
+    background-color: white;
+    border-radius: 6px;
+}
+

@@ -1,0 +1,531 @@
+*{
+    font-family: 'Cairo', sans-serif;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-thumb{
+    background-color: var(--frist-color);
+}
+a:visited{
+    color: black;
+}
+/* start compund */
+.t-header{
+    padding: 20px;
+}
+.t-header h4{
+    font-size: 20px;
+    margin: 15px 0;
+} 
+.t-header p{
+    color: #999;
+    margin: 0 0 10px;
+}
+/* end compund */
+:root{
+    --frist-color:#0075ff;
+}
+/* start media */
+/* small media */
+@media (min-width:768px){
+    .body{
+        width: 750px;
+    }
+}
+/* medium media */
+
+@media (min-width:992px){
+    .body{
+        width: 970px;
+    }
+}
+/* large media */
+
+@media (min-width:1200px){
+    .body{
+        width: 1170px;
+    }
+}
+/* end media */
+
+.body{
+    display: grid;
+    grid-template-areas: "aside con con con con ";
+    grid-template-columns: auto 1fr;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    gap: 0;
+}
+
+/* start aside */
+aside{
+    grid-area: aside;
+    z-index: 99;
+    background-color: white;
+}
+
+aside .logo{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    position: relative;
+    width: fit-content;
+    margin: 10px auto 30px;
+}
+@media (max-width:767px){
+    aside .logo{
+        text-align: center;
+        margin: 10px auto;
+        font-size: 15px;
+    }
+}
+aside .logo::before{
+    content: "";
+    width: calc(100% + 30px);
+    position: absolute;
+    height: 1px;
+    background-color: black;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -10px;
+}
+aside .logo::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -16px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: black;
+    border: 2px solid white;
+}
+@media (max-width:767px) {
+    aside .logo::after,
+    aside .logo::before{
+        display: none;
+    }
+}
+aside .as-content{
+    display: flex;
+    align-items: center;
+    padding: 10px 50px 10px 10px;
+    transition: .5s;
+    border-radius:6px;
+    margin: 10px;
+}
+@media (max-width:767px) {
+    aside .as-content{
+        padding: 10px;
+    }
+}
+aside .as-content.active{
+    background-color: #ddd;
+}
+aside .as-content:hover{
+    background-color: #DDD;
+}
+
+aside .as-content i{
+    margin-right: 10px;
+    font-size: 12px;
+}
+@media (max-width:767px) {
+    aside .as-content i{
+        margin: 0;
+    }
+}
+
+aside .as-content p{
+    margin: 0;
+}
+@media (max-width:767px) {
+    aside .as-content p{
+        display: none;
+    }
+}
+/* end aside */
+/* start content */
+.content{
+    grid-area: con;
+    background-color: #f1f5f9;
+    padding: 0px 15px 15px 15px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    margin: 0 -15px;
+    position: relative;
+
+}
+.content form{
+    position: relative;
+    width: fit-content;
+    height: fit-content;
+}
+form [type="search"]{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid #999;
+    border-color: 1;
+    outline: none;
+    background-color: transparent;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 30px;
+    font-size: 15px;
+}
+
+form i{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #999;
+}
+.not{
+    display: flex;
+    align-items: center;
+
+}
+.not i{
+    padding-right:20px ;
+    position: relative;
+}
+.not i::after{
+    content: "";
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border-radius: 50%;
+    right: 15px;
+    top: -7px;
+}
+.not .avatar{
+    width: 40px;
+    height: 40px;
+    background-color: #dddd;
+    border-radius: 50%;
+}
+.not .avatar img{
+    max-width: 100%;
+}
+.not i:hover+.list-not{
+    opacity: 1;
+    top: 100%;
+    z-index: 99;
+}
+.list-not{
+    position: absolute;
+    width: 200px;
+    height: 370px;
+    background-color: white;
+    padding: 15px;
+    border: 1px solid var(--frist-color);
+    top: calc(100% + 15px);
+    right: 20px;
+    z-index: -1;
+    border-radius: 10px;
+    opacity: 0;
+    transition: .5s;
+}
+.list-not:hover{
+    display: block;
+}
+.list-not span{
+    font-size: 12px;
+    display: block;
+    padding: 10px 10px 10px 15px;
+    color: black;
+    background-color: #ececec;
+    margin-bottom:  10px;
+    position: relative;
+    border: 1px solid var(--frist-color);
+}
+.list-not span a{
+    font-size: 7px;
+    background-color: #0075ff;
+    color: white;
+    padding: 2px;
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    border-radius: 2px;
+    margin-top: 2px;
+}
+
+/* end header */
+/* start main title */
+.main-title{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px 0px 10px;
+    position: relative;
+    width: fit-content;
+    margin-bottom: 20px;
+}
+.main-title::before{
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: calc(100%);
+    background-image: linear-gradient(
+        to right,black 0%,black 30%,white 30%,white 100%
+    );
+    bottom: 0;
+}
+/* end main title */
+/* start Compound */
+
+.Enable[type="checkbox"]{
+    width: 54px;
+    height: 18px;
+    background-color: #ddd;
+    border-radius: 50px;
+    position: relative;
+    appearance: none;
+    transition: .5s;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Enable[type="checkbox"]::before{ 
+    content: "\f00d";
+    position: absolute;
+    background-color: rgb(231, 79, 41);
+    font-family: "Font Awesome 6 Free";
+    left: 3px;  
+    color: white;
+    font-weight: 600;
+    font-size: 7px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: .5s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Enable:checked::before{
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    color: var(--frist-color);
+    background-color: white;
+    left: 72%;
+}
+.Enable[type="checkbox"]:checked{
+    background-color: var(--frist-color);
+}
+/* end Compound */
+
+/* start Profile */
+.profile{
+    display: flex;
+    width: 100%;
+    background-color: white;
+    border-radius: 6px;
+    padding: 10px;
+}
+@media (max-width:991px) {
+    .profile{
+        flex-direction: column;
+    }
+}
+.profile .photo{
+    padding: 0 50px;
+    text-align: center;
+}
+.profile .photo img{
+    width: 100px;
+}
+.profile .photo span:nth-child(2){
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+.profile .photo .level{
+    font-size: 17px;
+    color: #999;
+    position: relative;
+}
+.profile .photo .progress{
+    position: relative;
+    margin: 10px auto;
+    width: 170px;
+    height: 5px;
+    background-color: #ddd;
+    display: block;
+    border-radius: 6px;
+}
+.profile .photo .progress:before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 20%;
+    border-radius:6px ;
+    left: 0;
+    top: 0;
+    background-color:var(--frist-color);
+}
+.profile .photo .star{
+    margin: 15px 0;
+    color: gold;
+}
+
+.profile .photo span:last-child{
+    color: #999;
+    font-size: 12px;
+}
+
+.profile .text{
+    flex: 1;
+}
+.profile .text .frist-line{
+    border-bottom: 1px solid #ecec;
+    border-left: 1px solid #ececec;
+    padding: 5px 10px 10px;
+}
+@media (max-width:767px) {
+    .profile .text .frist-line:first-child{
+        border-top: 1px solid #ececec;
+        margin-top: 10px;
+    }
+}
+.profile .text .frist-line:last-child{
+    border-bottom: none;
+}
+.profile .text .frist-line > span{
+    color: #999;
+    display: block;
+}
+@media (max-width:767px){
+    .profile .text .frist-line > span{
+        text-align: center;
+    }
+}
+.profile .text .frist-line  .name{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@media (min-width:1200px) {
+    .profile .text .frist-line  .name{
+        width: 552px;
+    }
+}
+@media (max-width:767px){
+    .profile .text .frist-line  .name{
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+.profile .text .frist-line .name p{
+    font-size: 12px;
+    padding-right: 15px;
+    color: #999;
+}
+.profile .text .frist-line .name p span{
+    color: black;
+}
+/* End Profile */
+
+/* start about Profile */
+.about-profile{
+    display: flex;
+    margin-top: 15px;
+    gap: 20px;
+}
+@media (max-width:767px) {
+    .about-profile{
+        flex-direction: column;
+    }
+}
+.about-profile .skills{
+    flex-basis: 35%;
+}
+.about-profile .skills > div:not(:first-child){
+    padding: 10px 15px;
+    border-bottom: 1px solid #ececec;
+}
+.about-profile .skills div:not(:first-child) span{
+    width: fit-content;
+    display: inline-block;
+    padding: 5px;
+    background-color: #ddd;
+    border-radius: 6px;
+    margin-left: 5px;
+    font-size: 12px;
+}
+
+.about-profile .activity{
+    flex: 1;
+    padding: 0 15px;
+}
+.about-profile .activity .activity-body{
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ececec;
+    padding: 10px 0 10px;
+}
+@media (max-width:767px) {
+    .about-profile .activity .activity-body{
+        flex-direction: column;
+    }
+}
+.about-profile .activity .activity-body:last-child{
+    border: none;
+}
+.about-profile  .activity-body img{
+    width: 50px;
+}
+.about-profile  .activity-body .text {
+    margin-left: 10px;
+}
+@media (max-width:767px) {
+    .about-profile .activity-body .text{
+        text-align: center;
+    }
+}
+.about-profile  .activity-body .text span {
+    display: block;
+    padding: 10px 10px 5px;
+}
+.about-profile  .activity-body .text span:last-child{
+    color: #999;
+}
+.about-profile  .activity-body .time {
+    flex: 1;
+    text-align: right;
+    padding: 0 15px;
+}
+@media (max-width:767px) {
+    .about-profile  .activity-body .time{
+    margin-left: auto;
+    font-size: 12px;
+    padding: 10px 0 0;
+}
+}
+.about-profile  .activity-body .time span {
+    display: block;
+}
+.about-profile  .activity-body .time span:last-child {
+    color: #999;
+
+}
+/* end about Profile */
